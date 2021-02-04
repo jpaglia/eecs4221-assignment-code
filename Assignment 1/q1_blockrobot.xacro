@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="block_robot">
+
+<xacro:property name="base_height" value="0.05" />
+<xacro:property name="base_width" value="0.1" />
+<xacro:property name="base_length" value="0.1" />
+<xacro:property name="cylinder_length" value="0.05" />
+<xacro:property name="radius" value="0.05" />
+
+
+<xacro:macro name="boxInertia" params = "w d h M">
+  <inertial>
+     <mass value="${M}"/>
+     <inertia ixx="${1/12 * M * (h*h+d*d)}" iyy="${1/12 * M * (h*h+w*w)}" izz="${1/12 * M * (w*w+d*d)}" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+</xacro:macro>   
+ 
+ <xacro:macro name="cylinderInertia" params = "h r M">
+  <inertial>
+    <mass value="${M}"/>
+     <inertia ixx="${1/12 * M * h*h + 1/4 * M * r*r}" iyy="${1/12 * M * h*h + 1/4 * M * r*r}" izz="${1/2 * M * r*r}" ixy="0" ixz="0" iyz="0" />
+  </inertial>
+</xacro:macro>       
+     
+<material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+  <material name="green">
+    <color rgba="0 1 0 1"/>
+  </material>
+  
+    <link name="base_footprint">
+  </link>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  
+   <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+    
+     <collision>
+      <geometry>
+       <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+    </collision>
+    
+   <xacro:boxInertia w="0.1" d="0.1" h="0.05" M="4.5"/>
+  </link>
+  
+    <gazebo reference="laser_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  
+  <link name="laser_link">                                                               
+  
+    <visual>
+      <geometry>                                                                
+        <cylinder length="${cylinder_length}" radius="${radius}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <cylinder length="${cylinder_length}" radius="${radius}" />
+      </geometry>
+    </collision>
+    
+ <xacro:cylinderInertia h="0.05" r="0.05" M="0.01"/>
+  </link>
+  
+    <joint name="base_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0" />
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+  <joint name="laser_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0" />
+    <parent link="base_link" />
+    <child link="laser_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+
+  <gazebo reference="laser_link">
+    <static>true</static>
+    <sensor type="ray" name="head_hokuyo_sensor"> 
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.1415</min_angle>
+            <max_angle>3.1240</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.20</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan</topicName>
+        <frameName>laser_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>20.0</odometryRate>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+</robot>
