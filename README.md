@@ -1,4 +1,4 @@
-# eecs4221-assignment-code
+# eecs4421-assignment-code
 
 Source code submissions for EECS 4221 assignments (Winter 2021) <br>
 
