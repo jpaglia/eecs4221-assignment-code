@@ -28,8 +28,6 @@ def beacon_publisher(noisy_odom, publisher, beacon_id, beacon_x, beacon_y):
 
 if __name__ == '__main__':
 	myargv = rospy.myargv(argv=sys.argv)
-	if len(myargv) != 7:
-		print('Execute command as track_robot.py beacon_id x y')
 	robot = rospy.get_param("~robot", "block_robot")
 	cmdvel = rospy.get_param("~cmdvel", "cmd_vel")
 	backup_time = float(rospy.get_param("~backupt", "5.0"))
