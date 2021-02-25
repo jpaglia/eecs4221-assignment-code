@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<robot name="beacon_1">
+  <material name="green">
+     <color rgba="0 1 0 1"/>
+  </material>
+  
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <link name="beacon_1_footprint">
+  </link>
+
+  <gazebo reference="beacon_1_link">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="beacon_1_link">
+    <visual>
+      <geometry>
+       <cylinder radius="0.05" length="0.25"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.25"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="4.5" />
+      <inertia ixx="1.0e-3" iyy="1.0e-3" izz="7.5e-3" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+
+
+	<link name="beacon_1_rim1">
+	  <visual>
+	    <geometry>
+	     <cylinder radius="0.05" length="0.05"/>
+	    </geometry>
+	    <material name="white"/>
+	  </visual>
+	  <collision>
+	    <geometry>
+	      <cylinder radius="0.05" length="0.05"/>
+	    </geometry>
+	  </collision>
+	  <inertial>
+	    <mass value="4.5" />
+	    <inertia ixx="1.0e-3" iyy="1.0e-3" izz="7.5e-3" ixy="0" ixz="0" iyz="0" />
+	  </inertial>
+	</link>
+	
+	<gazebo reference="beacon_1_rim2">
+    <material>Gazebo/Green</material>
+  </gazebo>
+	<link name="beacon_1_rim2">
+	  <visual>
+	    <geometry>
+	     <cylinder radius="0.05" length="0.05"/>
+	    </geometry>
+	    <material name="green"/>
+	  </visual>
+	  <collision>
+	    <geometry>
+	      <cylinder radius="0.05" length="0.05"/>
+	    </geometry>
+	  </collision>
+	  <inertial>
+	    <mass value="4.5" />
+	    <inertia ixx="1.0e-3" iyy="1.0e-3" izz="7.5e-3" ixy="0" ixz="0" iyz="0" />
+	  </inertial>
+	</link>
+	
+	<link name="beacon_1_rim3">
+	  <visual>
+	    <geometry>
+	     <cylinder radius="0.05" length="0.03"/>
+	    </geometry>
+	    <material name="white"/>
+	  </visual>
+	  <collision>
+	    <geometry>
+	      <cylinder radius="0.05" length="0.05"/>
+	    </geometry>
+	  </collision>
+	  <inertial>
+	    <mass value="4.5" />
+	    <inertia ixx="1.0e-3" iyy="1.0e-3" izz="7.5e-3" ixy="0" ixz="0" iyz="0" />
+	  </inertial>
+	</link>
+	
+	<link name="beacon_1_top">
+	  <visual>
+	    <geometry>
+	     <sphere radius="0.05"/>
+	    </geometry>
+	    <material name="white"/>
+	  </visual>
+	  <collision>
+	    <geometry>
+	      <sphere radius="0.05"/>
+	    </geometry>
+	  </collision>
+	  <inertial>
+	    <mass value="4.5" />
+	    <inertia ixx="1.0e-3" iyy="1.0e-3" izz="7.5e-3" ixy="0" ixz="0" iyz="0" />
+	  </inertial>
+	</link>
+
+	
+	
+  <joint name="beacon_1_joint" type="fixed">
+    <origin xyz="5.0 1.0 0.0" rpy="0.0 0.0 0.0" />
+    <parent link="beacon_1_footprint" />
+    <child link="beacon_1_link" />
+    <axis xyz="5 0 1" />
+  </joint>
+  
+  <joint name="beacon_1_rim_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.15" rpy="0.0 0.0 0.0" />
+    <parent link="beacon_1_link" />
+    <child link="beacon_1_rim1" />
+    <axis xyz="5 0 1" />
+  </joint>
+  
+  <joint name="beacon_1_rim_joint2" type="fixed">
+    <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0" />
+    <parent link="beacon_1_rim1" />
+    <child link="beacon_1_rim2" />
+    <axis xyz="5 0 1" />
+  </joint>
+ 
+  <joint name="beacon_1_rim_joint3" type="fixed">
+    <origin xyz="0.0 0.0 0.04" rpy="0.0 0.0 0.0" />
+    <parent link="beacon_1_rim2" />
+    <child link="beacon_1_rim3" />
+    <axis xyz="5 0 1" />
+  </joint>
+  
+  <joint name="beacon_1_top_link" type="fixed">
+    <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0" />
+    <parent link="beacon_1_rim3" />
+    <child link="beacon_1_top" />
+    <axis xyz="5 0 1" />
+  </joint>
+  
+ 
+
+</robot>

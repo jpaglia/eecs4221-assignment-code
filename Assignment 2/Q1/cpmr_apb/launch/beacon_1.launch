@@ -1,0 +1,4 @@
+<launch>
+  <param name="robot_description" textfile="$(find cpmr_apb)/urdf/beacon_1.urdf" />
+  <node name="spawn_urdf_3" pkg="gazebo_ros" type="spawn_model" args="-unpause -param robot_description -urdf -model beacon_1 "/>
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <param name="robot_description" textfile="$(find cpmr_apb)/urdf/blockrobot.urdf" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-unpause -param robot_description -urdf -model block_robot "/>
+  <node name="rsp" type="robot_state_publisher" pkg="robot_state_publisher" />
+  
+   <include ns="beacon_0"  file="$(find cpmr_apb)/launch/beacon_0.launch" />
+   <include ns="beacon_1"  file="$(find cpmr_apb)/launch/beacon_1.launch" />
+   <include ns="beacon_2"  file="$(find cpmr_apb)/launch/beacon_2.launch" />
+</launch>
