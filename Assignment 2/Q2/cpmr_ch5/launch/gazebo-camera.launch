@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+<include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+<!-- also spawning the Udock !-->    
+<include file="$(find cpmr_ch5)/launch/spawn_sdf.launch">
+    <arg name="obj_name" value="UDOCK"/>
+    <arg name="x" value="5.0"/>
+    <arg name="y" value="0.25"/>
+    <arg name="z" value="0.0"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <!-->dock with id0 <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/UDOCK_with_id0/model.sdf"/> <!-->
+    <!--><arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/UDOCK_with_id0_dist/model.sdf"/> dock with distraction block <!-->
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/UDOCK_V2/model.sdf"/> <!--> distraction behind aruco tag <!--> 
+</include>
+ 
+<!-- and the robot !--> 
+  <param name="robot_description" command="$(find xacro)/xacro name:='camera_robot' '$(find cpmr_ch5)/urdf/scout-camera.urdf.xacro'" />
+  <node name="rsp" type="robot_state_publisher" pkg="robot_state_publisher" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-unpause -param robot_description -urdf -model camera_robot "/>
+
+</launch>

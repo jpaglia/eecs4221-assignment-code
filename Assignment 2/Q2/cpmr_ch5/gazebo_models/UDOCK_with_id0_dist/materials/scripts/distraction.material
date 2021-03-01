@@ -1,0 +1,15 @@
+material distraction/Diffuse
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture ../textures/noise.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}
