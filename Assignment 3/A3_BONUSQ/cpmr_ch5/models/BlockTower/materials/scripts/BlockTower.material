@@ -1,0 +1,15 @@
+material BlockTower/Diffuse
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture ../textures/tower.jpeg
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

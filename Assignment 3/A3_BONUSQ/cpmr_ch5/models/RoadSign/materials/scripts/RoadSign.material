@@ -1,0 +1,15 @@
+material RoadSign/Diffuse
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture ../textures/texture.jpeg
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

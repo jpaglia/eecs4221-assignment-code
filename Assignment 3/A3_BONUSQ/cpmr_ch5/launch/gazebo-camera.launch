@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+<!-- we obviously need to open gazebo for this... -->
+<include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+<!-- road plane-->
+<include file="$(find cpmr_ch5)/launch/spawn_road.launch">
+    <arg name="obj_name" value="RoadPlane"/>
+    <arg name="x" value="0"/>
+    <arg name="y" value="0"/>
+    <arg name="z" value="0"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/road_plane_distractor/model.sdf"/>
+</include>
+
+<!-- roadsign 1-->
+<include file="$(find cpmr_ch5)/launch/spawn_sign1.launch">
+    <arg name="obj_name" value="RoadSign1"/>
+    <arg name="x" value="-1.63"/>
+    <arg name="y" value="-0.43"/>
+    <arg name="z" value="0.5"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/RoadSign/model.sdf"/>
+</include>
+
+<!-- roadsign 2-->
+<include file="$(find cpmr_ch5)/launch/spawn_sign2.launch">
+    <arg name="obj_name" value="RoadSign2"/>
+    <arg name="x" value="3.0"/>
+    <arg name="y" value="6.8"/>
+    <arg name="z" value="0.5"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/RoadSign/model.sdf"/>
+</include>
+
+<!-- Tree 1 -->
+<include file="$(find cpmr_ch5)/launch/spawn_tree1.launch">
+    <arg name="obj_name" value="Tree1"/>
+    <arg name="x" value="1.385"/>
+    <arg name="y" value="0.26"/>
+    <arg name="z" value="0.35"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/Tree/model.sdf"/>
+</include>
+
+<!-- Tree 2 -->
+<include file="$(find cpmr_ch5)/launch/spawn_tree2.launch">
+    <arg name="obj_name" value="Tree2"/>
+    <arg name="x" value="4.983"/>
+    <arg name="y" value="-1.2"/>
+    <arg name="z" value="0.35"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/Tree/model.sdf"/>
+</include>
+
+<!-- Tree 3 -->
+<include file="$(find cpmr_ch5)/launch/spawn_tree3.launch">
+    <arg name="obj_name" value="Tree3"/>
+    <arg name="x" value="6.4"/>
+    <arg name="y" value="-8.71"/>
+    <arg name="z" value="0.35"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/Tree/model.sdf"/>
+</include>
+
+<!-- Tree 4 -->
+<include file="$(find cpmr_ch5)/launch/spawn_tree4.launch">
+    <arg name="obj_name" value="Tree4"/>
+    <arg name="x" value="-1.588"/>
+    <arg name="y" value="-7.5"/>
+    <arg name="z" value="0.35"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/Tree/model.sdf"/>
+</include>
+
+<!-- Tower 1-->
+<include file="$(find cpmr_ch5)/launch/spawn_tower1.launch">
+    <arg name="obj_name" value="Tower1"/>
+    <arg name="x" value="2.236"/>
+    <arg name="y" value="-3.8"/>
+    <arg name="z" value="0.5"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/BlockTower/model.sdf"/>
+</include>
+<!-- Tower 2-->
+<include file="$(find cpmr_ch5)/launch/spawn_tower2.launch">
+    <arg name="obj_name" value="Tower2"/>
+    <arg name="x" value="-0.6636"/>
+    <arg name="y" value="1.5963"/>
+    <arg name="z" value="0.5"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/BlockTower/model.sdf"/>
+</include>
+<!-- Tower 3-->
+<include file="$(find cpmr_ch5)/launch/spawn_tower3.launch">
+    <arg name="obj_name" value="Tower3"/>
+    <arg name="x" value="8.502"/>
+    <arg name="y" value="5.844"/>
+    <arg name="z" value="0.5"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/BlockTower/model.sdf"/>
+</include>
+<!-- Tower 4-->
+<include file="$(find cpmr_ch5)/launch/spawn_tower4.launch">
+    <arg name="obj_name" value="Tower4"/>
+    <arg name="x" value="-5.8561"/>
+    <arg name="y" value="1.824"/>
+    <arg name="z" value="0.5"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/BlockTower/model.sdf"/>
+</include>
+<!-- Tower 5-->
+<include file="$(find cpmr_ch5)/launch/spawn_tower5.launch">
+    <arg name="obj_name" value="Tower5"/>
+    <arg name="x" value="-4.957"/>
+    <arg name="y" value="-3.65"/>
+    <arg name="z" value="0.5"/>
+    <arg name="roll" value="0"/>
+    <arg name="pitch" value="0"/>
+    <arg name="yaw" value="0.0"/>
+    <arg name="sdf_obj_file" value="$(find cpmr_ch5)/models/BlockTower/model.sdf"/>
+</include>
+  <param name="robot_description" command="$(find xacro)/xacro name:='camera_robot' '$(find cpmr_ch5)/urdf/scout-camera.urdf.xacro'" />
+  <node name="rsp" type="robot_state_publisher" pkg="robot_state_publisher" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-unpause -param robot_description -urdf -model camera_robot "/>
+</launch>
