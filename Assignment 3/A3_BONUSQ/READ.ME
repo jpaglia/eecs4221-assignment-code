@@ -1,0 +1,19 @@
+Modified for Assignment 3 - Bonus Question!!!
+
+cpmr_ch5
+------------------------------------
+All custom models made for this assignment are in /gazebo_models, make sure these are in ~/.gazebo/models so the world can load properly
+
+gazebo-camera.launch - launch the robot with a camera, opens Gazebo, spawns distractor objects to form Alt1 world. Alt2 world described in the report was not scripted, and can be recreated by adding models through Gazebo's world editor.
+
+launch script requires that project folder be named cpmr_ch5
+
+
+cpmr_ch6
+-----------------------------------
+/scripts/database empty, GitHub doesnt like uploading thousands of files at once.
+
+/src/model contains two model files. saved_model_Q1.pb and saved_model_Q2.pb . The Q1 file is the balanced training model created from the first part of the assignment. The Q2 file is the training model which was born and raised in the distractor environment. In order to deploy either of these, need to rename the file intended for testing to "saved_model.pb"
+
+python3 follow_road once gazebo is open to deploy CNN model, press g to go and q to stop.
+
